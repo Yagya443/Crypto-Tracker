@@ -59,6 +59,13 @@ const CoinDetail = () => {
                             day: "numeric",
                         });
                         break;
+                    case 180:
+                        time = new Date(price[0]).toLocaleDateString("en-US", {
+                            month: "short",
+                            year: "numeric",
+                            // day: "numeric",
+                        });
+                        break;
                     case 360:
                         time = new Date(price[0]).toLocaleDateString("en-US", {
                             month: "short",
@@ -85,7 +92,6 @@ const CoinDetail = () => {
         loadChartData(days);
     }, [id, days]);
 
-    // console.log(coin);
 
     if (loading) {
         return (
@@ -132,10 +138,13 @@ const CoinDetail = () => {
             xAxisInterval = 22;
             break;
         case 15:
-            xAxisInterval = 15;
+            xAxisInterval = 25;
             break;
         case 30:
-            xAxisInterval = 31;
+            xAxisInterval = 30;
+            break;
+        case 180:
+            xAxisInterval = 32;
             break;
         case 360:
             xAxisInterval = 30;
@@ -148,7 +157,7 @@ const CoinDetail = () => {
         <div className="app">
             <header>
                 <div className="header-content">
-                    <h2 className="header-title">Crypto Tracker</h2>
+                    <h2 className=  "header-title">Crypto Tracker</h2>
                     <p className="header-para">
                         Real-Time Crypto-Currency updates and Market data
                     </p>
@@ -231,7 +240,8 @@ const CoinDetail = () => {
                                 <option value="7">7 Days</option>
                                 <option value="15">15 Days</option>
                                 <option value="30">30 Days</option>
-                                <option value="360">6 Month</option>
+                                <option value="180">6 Month</option>
+                                <option value="360">1 Year</option>
                             </select>
                         </div>
                     </div>
