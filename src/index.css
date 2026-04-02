@@ -46,6 +46,7 @@ header {
     font-size: 2rem;
     font-weight: 700;
     letter-spacing: 0.5px;
+    text-wrap: nowrap;
 }
 
 .header-content .header-para {
@@ -362,6 +363,8 @@ header {
 
 .chart-section .chart {
     margin-top: 20px;
+    width: 100%;
+    height: 400px;
 }
 
 .chart-section .chart-header {
@@ -372,7 +375,9 @@ header {
 
 .chart-section .chart-duration {
     display: flex;
-    gap: 10px;
+    gap: 30px;
+    /* justify-content: center; */
+    align-items: center;
 }
 
 .chart-section .chart-duration label {
@@ -384,7 +389,7 @@ header {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 25px;
     width: 100%;
 }
@@ -418,4 +423,120 @@ header {
     color: #9aa0ea;
     margin-top: 10px;
     font-weight: 700;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    /* body {
+        background-color: rgba(13, 39, 39, 0.195);
+    } */
+
+    .app {
+        width: 95%;
+    }
+    header {
+        width: 90%;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 16px;
+    }
+    .header-content .header-title {
+        font-size: 1.5rem;
+    }
+    .header-content .header-para {
+        font-size: 0.9rem;
+    }
+    .header-search input {
+        margin-top: 12px;
+    }
+    .controls .view-toggle {
+        display: none;
+    }
+
+    /* Coin Detail*/
+
+    .go-back-button {
+        margin-top: 10px;
+    }
+    .coin-detail {
+        width: 100%;
+    }
+
+    .chart-section .chart-header {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .chart-section .chart-duration {
+        margin-top: 10px;
+    }
+
+    .chart-section .chart-duration label {
+        font-size: 25px;
+        /* margin-top: 10px; */
+    }
+    .chart-section .chart{
+        height: 300px;
+        /* width: 100%; */
+    }.stats-grid{
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    
+}
+
+/* Tablet */
+@media (max-width: 768px) and (min-width: 480px) {
+    .app {
+        width: 90%;
+    }
+    header {
+        width: 90%;
+        padding: 18px 14px;
+    }
+    .header-content .header-para {
+        font-size: 0.75rem;
+    }
+    .header-content .header-title {
+        font-size: 1.8rem;
+    }
+    .controls {
+        width: 95%;
+    }
+    .controls .filter-group select {
+        font-size: 0.8rem;
+    }
+    .view-toggle button {
+        display: none;
+    }
+    .coin-detail{
+        width: 100%;
+    }
+    .stats-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+    .app {
+        width: 90%;
+    }
+  header {
+        width: 90%;
+        padding: 18px 14px;
+    }
+    .crypto-container.grid {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 4fr));
+    }
+    .header-search input {
+        width: 14rem;
+    }
+    .coin-detail{
+        width: 100%;
+    }
+    .stats-grid{
+        grid-template-columns: repeat(2,1fr);
+    }
 }

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchChartData, fetchCoinData } from "../api/coinGecko";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import { FaArrowDownLong, FaArrowUpLong } from "react-icons/fa6";
 import { formatMarketCap, formatter } from "../../utils/formatter";
@@ -22,6 +22,15 @@ const CoinDetail = () => {
     const [coin, setCoin] = useState(null);
     const [chartData, setChartData] = useState([]);
     const [days, setDays] = useState(7);
+
+    const [screenWidth, setScreenWidth] = useState(0);
+    const elementRef = useRef(null);
+
+    useLayoutEffect(() => {
+        if (elementRef.current) {
+            setScreenWidth(elementRef.current.offsetWidth);
+        }
+    },[]);
 
     const loadCoinData = async () => {
         try {
@@ -92,7 +101,6 @@ const CoinDetail = () => {
         loadChartData(days);
     }, [id, days]);
 
-
     if (loading) {
         return (
             <>
@@ -133,31 +141,57 @@ const CoinDetail = () => {
 
     let xAxisInterval;
 
-    switch (days) {
-        case 7:
-            xAxisInterval = 22;
-            break;
-        case 15:
-            xAxisInterval = 25;
-            break;
-        case 30:
-            xAxisInterval = 30;
-            break;
-        case 180:
-            xAxisInterval = 32;
-            break;
-        case 360:
-            xAxisInterval = 30;
-            break;
-        default:
-            xAxisInterval = "preserveStartEnd";
+    if (screenWidth > 480) {
+        switch (days) {
+            case 7:
+                xAxisInterval = 22;
+                break;
+            case 15:
+                xAxisInterval = 25;
+                break;
+            case 30:
+                xAxisInterval = 30;
+                break;
+            case 180:
+                xAxisInterval = 32;
+                break;
+            case 360:
+                xAxisInterval = 30;
+                break;
+            default:
+                xAxisInterval = "preserveStartEnd";
+        }
+        console.log('600');
+        
+    } else if (screenWidth <= 480) {
+        switch (days) {
+            case 7:
+                xAxisInterval = 50;
+                break;
+            case 15:
+                xAxisInterval = 55;
+                break;
+            case 30:
+                xAxisInterval = 95;
+                break;
+            case 180:
+                xAxisInterval = 40;
+                break;
+            case 360:
+                xAxisInterval = 40;
+                break;
+            default:
+                xAxisInterval = "preserveStartEnd";
+        }
+        console.log('300');
+
     }
 
     return (
-        <div className="app">
+        <div className="app" ref={elementRef}>
             <header>
                 <div className="header-content">
-                    <h2 className=  "header-title">Crypto Tracker</h2>
+                    <h2 className="header-title">Crypto Tracker</h2>
                     <p className="header-para">
                         Real-Time Crypto-Currency updates and Market data
                     </p>
@@ -246,7 +280,7 @@ const CoinDetail = () => {
                         </div>
                     </div>
                     <div className="chart">
-                        <ResponsiveContainer width="100%" height="400">
+                        <ResponsiveContainer width="100%" height="100%">
                             <LineChart data={chartData}>
                                 <CartesianGrid
                                     strokeDasharray="3 3"
