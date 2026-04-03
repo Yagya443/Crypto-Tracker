@@ -161,7 +161,7 @@ const CoinDetail = () => {
             default:
                 xAxisInterval = "preserveStartEnd";
         }
-        console.log('600');
+        // console.log('600');
         
     } else if (screenWidth <= 480) {
         switch (days) {
@@ -169,10 +169,10 @@ const CoinDetail = () => {
                 xAxisInterval = 50;
                 break;
             case 15:
-                xAxisInterval = 55;
+                xAxisInterval = 100;
                 break;
             case 30:
-                xAxisInterval = 95;
+                xAxisInterval = 135;
                 break;
             case 180:
                 xAxisInterval = 40;
@@ -183,7 +183,7 @@ const CoinDetail = () => {
             default:
                 xAxisInterval = "preserveStartEnd";
         }
-        console.log('300');
+        // console.log('300');
 
     }
 
