@@ -357,7 +357,7 @@ header {
 
 .chart-section {
     background-color: #272525;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
 }
 
@@ -383,9 +383,9 @@ header {
 .chart-section .chart-duration label {
     font-size: 25px;
 }
-/* .chart-section .chart-duration select {
-    font-size: 15px;
-} */
+.chart-section .chart-duration select {
+    font-size: 12px;
+}
 
 .stats-grid {
     display: grid;
@@ -466,23 +466,27 @@ header {
         flex-direction: column;
         align-items: start;
     }
+    .chart-section .chart-header h1 {
+        font-size: 25px;
+    }
 
     .chart-section .chart-duration {
         margin-top: 10px;
+        gap: 10px;
+        /* font-size: 10px; */
     }
 
     .chart-section .chart-duration label {
-        font-size: 25px;
+        font-size: 20px;
         /* margin-top: 10px; */
     }
-    .chart-section .chart{
+    .chart-section .chart {
         height: 300px;
         /* width: 100%; */
-    }.stats-grid{
-        grid-template-columns: repeat(1,1fr);
     }
-
-    
+    .stats-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 /* Tablet */
@@ -509,21 +513,19 @@ header {
     .view-toggle button {
         display: none;
     }
-    .coin-detail{
+    .coin-detail {
         width: 100%;
     }
-    .stats-grid{
-        grid-template-columns: repeat(2,1fr);
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-
-
 }
 
 @media (max-width: 1024px) and (min-width: 768px) {
     .app {
         width: 90%;
     }
-  header {
+    header {
         width: 90%;
         padding: 18px 14px;
     }
@@ -533,10 +535,10 @@ header {
     .header-search input {
         width: 14rem;
     }
-    .coin-detail{
+    .coin-detail {
         width: 100%;
     }
-    .stats-grid{
-        grid-template-columns: repeat(2,1fr);
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

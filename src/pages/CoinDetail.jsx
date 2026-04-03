@@ -30,7 +30,7 @@ const CoinDetail = () => {
         if (elementRef.current) {
             setScreenWidth(elementRef.current.offsetWidth);
         }
-    },[]);
+    }, []);
 
     const loadCoinData = async () => {
         try {
@@ -162,7 +162,6 @@ const CoinDetail = () => {
                 xAxisInterval = "preserveStartEnd";
         }
         // console.log('600');
-        
     } else if (screenWidth <= 480) {
         switch (days) {
             case 7:
@@ -175,16 +174,15 @@ const CoinDetail = () => {
                 xAxisInterval = 135;
                 break;
             case 180:
-                xAxisInterval = 40;
+                xAxisInterval = 55;
                 break;
             case 360:
-                xAxisInterval = 40;
+                xAxisInterval = 100;
                 break;
             default:
                 xAxisInterval = "preserveStartEnd";
         }
         // console.log('300');
-
     }
 
     return (
@@ -289,12 +287,24 @@ const CoinDetail = () => {
                                 <XAxis
                                     dataKey="time"
                                     stroke="#fff"
-                                    style={{ fontSize: "14px" }}
+                                    // width={20}
+                                    // style={{ fontSize: "14px" }}
+                                    style={
+                                        screenWidth > 480
+                                            ? { fontSize: "14px" }
+                                            : { fontSize: "10px" }
+                                    }
                                     interval={xAxisInterval}
+                                    // tick={{ fontSize: 16 }}
                                 />
                                 <YAxis
                                     stroke="#fff"
-                                    style={{ fontSize: "14px" }}
+                                    width={28}
+                                    style={
+                                        screenWidth > 480
+                                            ? { fontSize: "14px" }
+                                            : { fontSize: "10px" }
+                                    }
                                     domain={["auto", "auto"]}
                                 />
                                 <Tooltip

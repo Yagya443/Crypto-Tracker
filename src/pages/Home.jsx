@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {coinGecko} from "../api/coinGecko";
+import { coinGecko } from "../api/coinGecko";
 import { ThreeDots } from "react-loader-spinner";
 import "../index.css";
 import CryptoCard from "../Components/CryptoCard";

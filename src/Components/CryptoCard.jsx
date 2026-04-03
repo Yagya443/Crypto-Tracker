@@ -15,7 +15,13 @@ const CryptoCard = ({ crypto }) => {
                             src={crypto.image}
                             alt={crypto.name}
                         />
-                        <div style={{display:"flex", flexDirection:'column', gap:'10px'}}>
+                        <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "column",
+                                gap: "10px",
+                            }}
+                        >
                             <div>
                                 <h3 className="name">{crypto.name}</h3>
                                 <p className="symbol">
